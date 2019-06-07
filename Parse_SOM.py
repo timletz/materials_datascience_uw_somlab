@@ -50,6 +50,10 @@ BAD_PROPERTIES = [
     'Ductility index',
     'Thermal shock resistance',
     'Thermal distortion resistance',
+    # These properties are not actually real properties of the material
+    'Max service temp',
+    'Min service temp',
+    'Electrical resistivity',
 ]
 
 # These are materials with invalid values for one or more properties
@@ -523,6 +527,7 @@ def null_invalid_properties(frame: pd.DataFrame):
     
     # Be gingerly with this column because there's larger entries with valid values
     frame["Thermal shock resistance"].mask(frame["Thermal shock resistance"].eq(47650), inplace=True)
+    frame["Fracture toughness"].mask(frame["Fracture toughness"].gt(12000), inplace=True)
 
 def properties_dataframe_from_file(path: str):
     property_lists = parsing_refined_data(path)
