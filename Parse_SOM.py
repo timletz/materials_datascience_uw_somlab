@@ -54,6 +54,8 @@ BAD_PROPERTIES = [
     'Max service temp',
     'Min service temp',
     'Electrical resistivity',
+    # This really messes with our data selection
+    'Galvanic potential',
 ]
 
 # These are materials with invalid values for one or more properties
